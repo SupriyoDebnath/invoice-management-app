@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="apphome">
+      <ion-label><p style="text-align:center; font-size:20px"><b>Company Name</b></p></ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="apphome">
+  <ion-card style="margin-top:50px">
+    <ion-item lines="none" color="applogin">
+
+    </ion-item>
+    <ion-item lines="none" color="applogin">
+
+    </ion-item>
+    <ion-item lines="none" color="applogin">
+
+    </ion-item>
+    <ion-item lines="none" color="applogin">
+
+    </ion-item>
+    <ion-item lines="none" color="applogin">
+
+    </ion-item>
+    <ion-item lines="none" color="applogin">
+
+    </ion-item>
+    <form [formGroup] = "userForm" (ngSubmit) = "validateUser(userForm.value)">
+      <ion-item lines="none" color="applogin">
+        <ion-icon name="people" slot="start"></ion-icon>
+        <ion-input type="text" formControlName = "username" placeholder="Username*" required></ion-input>
+      </ion-item>
+      <ion-item lines="none" color="applogin">
+        <ion-icon name="lock" slot="start"></ion-icon>
+        <ion-input type="password" formControlName = "password" placeholder="Password*" required></ion-input>
+      </ion-item>
+      <ion-item color="applogin">
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label><p><i>Remember Me</i></p></ion-label>
+        <ion-label><p><i>Forgot Password</i></p></ion-label>
+      </ion-item>
+      <ion-button expand="block" color="appconfirm" type="submit">Sign In</ion-button>
+    </form>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="apphome">
+      <ion-label><p style="text-align:center; font-size:15px">All Rights © Reserved</p></ion-label>
+  </ion-toolbar>
+</ion-footer>

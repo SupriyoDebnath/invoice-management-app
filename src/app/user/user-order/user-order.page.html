@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="apphome">
+    <ion-title>Order Summary</ion-title>
+    <ion-buttons slot="end">
+        <ion-button size="large" (click)="cancelCurrentOrder()">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      <ion-button size="large" (click)="closeCurrentOrder()">
+        <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let orderedItem of currentOrder.items">
+      <ion-button slot="start" fill="clear" color="appreject" class="ion-no-padding" (click)="removeFromCurrentOrder(orderedItem.itemId, orderedItem.itemQuantity)">
+          <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+      <ion-label>
+        <p>
+          <b>{{ getOrderedItemName(orderedItem.itemId) }}</b>
+          <br/>
+          <i style="font-size:10px">Price: ₹{{ getOrderedItemGross(orderedItem.itemId, orderedItem.itemQuantity) }} GST: ₹{{ getOrderedItemGST(orderedItem.itemId, orderedItem.itemQuantity) }}</i>
+        </p>
+      </ion-label>
+      <ion-label slot="end"> 
+        <ion-chip color="apphome">
+          <ion-button fill="clear" color="appreject" class="ion-no-padding" (click)="decreaseItemQuantity(orderedItem.itemId, orderedItem.itemQuantity)">
+            <ion-icon name="remove-circle"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="apphome">
+            <ion-badge color="apphome">{{ orderedItem.itemQuantity }}</ion-badge>
+          </ion-button>
+          <ion-button fill="clear" color="appconfirm" class="ion-no-padding" (click)="increaseItemQuantity(orderedItem.itemId)">
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-button>
+        </ion-chip>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label><b>Gross Total</b></ion-label>
+      <ion-label slot="end"><p style="text-align:right">{{ currentOrder.amountGross }}</p></ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label><b>CGST</b></ion-label>
+      <ion-label slot="end"><p style="text-align:right">{{ currentOrder.amountCGST }}</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>SGST</b></ion-label>
+      <ion-label slot="end"><p style="text-align:right">{{ currentOrder.amountSGST }}</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Net Total</b></ion-label>
+      <ion-label slot="end"><p style="text-align:right">{{ currentOrder.amountNet }}</p></ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" color="appconfirm" (click)="confirmCurrentOrder()">Confirm Order</ion-button>
+  </ion-toolbar>
+</ion-footer>

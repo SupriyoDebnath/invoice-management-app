@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="apphome">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="userMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Company Name</ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="large" (click)="showCurrentOrder()">
+        <ion-badge color="appconfirm">{{ currentOrderItemQuantity }}</ion-badge>
+        <ion-icon name="cart" slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getSearchedItem()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of renderedItems" lines="none">
+      <ion-thumbnail slot="start">
+        <img [src]="item.avatar">
+      </ion-thumbnail>
+      <ion-label>
+        <p>
+          <b>{{ item.name }}</b><br/>
+          <i style="font-size:10px">₹ {{ item.price }} CGST {{ item.percentageCGST }}% SGST {{ item.percentageSGST }}%</i>
+        </p>
+      </ion-label>
+      <ion-button shape="round" size="default" slot="end" color="appconfirm" (click)="addToCurrentOrder(item)">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar color="apphome">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/user"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Order #{{ finalOrder.id }} Invoice</ion-title>
+    </ion-toolbar>
+    <ion-toolbar color="apphome">
+      <ion-card style="margin-top:0px">
+        <ion-card-header style="padding-top:0px; padding-bottom:0px"> 
+          <ion-card-title>
+            <p style="color:white">₹ {{ finalOrder.amountNet }}</p>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-item color="apphome">
+          <ion-label>
+            <p style="color:white">Recipient: {{ userName }}</p>
+          </ion-label>
+          <ion-label slot="end">
+            <p style="color:white">Date: {{ finalOrder.orderDate | date:'d/M/y' }}</p>
+          </ion-label>
+          </ion-item>
+      </ion-card>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-grid>
+        <ion-row style="background:black; height:30px">
+          <ion-col style="height:25px; color:white; font-size: 10px" size="5">Item</ion-col>
+          <ion-col style="height:25px; color:white; font-size: 10px" size="1">Qty</ion-col>
+          <ion-col style="height:25px; color:white; font-size: 10px">Gross(₹)</ion-col>
+          <ion-col style="height:25px; color:white; font-size: 10px">GST(₹)</ion-col>
+          <ion-col style="height:25px; color:white; font-size: 10px">Net(₹)</ion-col>
+        </ion-row>
+        <ion-row style="height:30px" *ngFor="let orderedItem of finalOrder.items">
+          <ion-col style="height:25px; font-size: 10px" size="5">{{ getOrderedItemName(orderedItem.itemId, orderedItem.itemQuantity) }}</ion-col>
+          <ion-col style="height:25px; font-size: 10px; text-align: right" size="1">{{ orderedItem.itemQuantity }}</ion-col>
+          <ion-col style="height:25px; font-size: 10px; text-align: right">{{ getOrderedItemGross(orderedItem.itemId, orderedItem.itemQuantity) }}</ion-col>
+          <ion-col style="height:25px; font-size: 10px; text-align: right">{{ getOrderedItemGST(orderedItem.itemId, orderedItem.itemQuantity) }}</ion-col>
+          <ion-col style="height:25px; font-size: 10px; text-align: right">{{ getOrderedItemNet(orderedItem.itemId, orderedItem.itemQuantity) }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label><b>Gross Total</b></ion-label>
+      <ion-label slot="end"><p style="text-align:right">{{ finalOrder.amountGross }}</p></ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label><b>CGST</b></ion-label>
+      <ion-label slot="end"><p style="text-align:right">{{ finalOrder.amountCGST }}</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>SGST</b></ion-label>
+      <ion-label slot="end"><p style="text-align:right">{{ finalOrder.amountSGST }}</p></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Net Total</b></ion-label>
+      <ion-label slot="end"><p style="text-align:right">{{ finalOrder.amountNet }}</p></ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" color="appconfirm" (click)="printInvoice()">Print Invoice</ion-button>
+  </ion-toolbar>
+</ion-footer>

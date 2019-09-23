@@ -1,0 +1,77 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.ion-color-apphome {
+    --ion-color-base: var(--ion-color-apphome);
+    --ion-color-base-rgb: var(--ion-color-apphome-rgb);
+    --ion-color-contrast: var(--ion-color-apphome-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-apphome-contrast-rgb);
+    --ion-color-shade: var(--ion-color-apphome-shade);
+    --ion-color-tint: var(--ion-color-apphome-tint);
+  } 
+  
+  .ion-color-appconfirm {
+    --ion-color-base: var(--ion-color-appconfirm);
+    --ion-color-base-rgb: var(--ion-color-appconfirm-rgb);
+    --ion-color-contrast: var(--ion-color-appconfirm-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-appconfirm-contrast-rgb);
+    --ion-color-shade: var(--ion-color-appconfirm-shade);
+    --ion-color-tint: var(--ion-color-appconfirm-tint);
+  } 
+
+  .ion-color-appreject {
+    --ion-color-base: var(--ion-color-appreject);
+    --ion-color-base-rgb: var(--ion-color-appreject-rgb);
+    --ion-color-contrast: var(--ion-color-appreject-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-appreject-contrast-rgb);
+    --ion-color-shade: var(--ion-color-appreject-shade);
+    --ion-color-tint: var(--ion-color-appreject-tint);
+  }
+
+  .ion-color-applogin {
+    --ion-color-base: var(--ion-color-applogin);
+    --ion-color-base-rgb: var(--ion-color-applogin-rgb);
+    --ion-color-contrast: var(--ion-color-applogin-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-applogin-contrast-rgb);
+    --ion-color-shade: var(--ion-color-applogin-shade);
+    --ion-color-tint: var(--ion-color-applogin-tint);
+  }
+
+  .app-modal-css .modal-wrapper {
+    height: 80%;
+    top: 80%; 
+ }
+
+ .app-alert-css {
+  button.alert-button.reject-button{
+    color: var(--ion-color-appreject);
+  }
+
+  button.alert-button.confirm-button{
+    color: var(--ion-color-appconfirm);
+  }
+ }
